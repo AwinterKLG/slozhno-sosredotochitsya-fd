@@ -369,7 +369,6 @@
   .rec-and-buttons {
     position: initial;
     right: initial;
-    grid-area: initial;
     grid-area: header__theme-menu;
     justify-self: initial;
   }
