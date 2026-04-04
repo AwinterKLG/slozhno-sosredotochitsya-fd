@@ -413,9 +413,7 @@ h4 {
     min-width: 300px;
     max-width: 335px;
   }
-  .article__what {
-    gap: initial;
-  }
+  
   .block__why {
     grid-template-columns:
       calc(315 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
@@ -436,6 +434,7 @@ h4 {
     grid-template-rows: repeat(2, min-content);
     grid-auto-columns: min-content;
     grid-auto-flow: column;
+    gap: initial;
   }
   .concentration {
     grid-column: 1 / 2;
