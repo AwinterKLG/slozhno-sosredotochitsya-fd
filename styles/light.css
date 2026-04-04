@@ -14,6 +14,8 @@
   --button-text-color: #353430;
   --button-border-color-hover: rgba(53, 52, 48, 0.4);
   --color-border-active: #353430;
+  --header-text-color: #353430;
+  --link-hover-color: #353430;
 }
 .theme-light .rec {
   display: none;
@@ -36,6 +38,8 @@
     --button-text-color: #353430;
     --button-border-color-hover: rgba(53, 52, 48, 0.4);
     --color-border-active: #353430;
+    --header-text-color: #353430;
+    --link-hover-color: #353430;
   }
   .rec {
     display: none;

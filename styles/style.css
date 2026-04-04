@@ -9,8 +9,8 @@
 .header {
   position: relative;
   display: grid;
-  grid-template-columns: 228px 127px;
-  grid-template-rows: 228px 192px 228px;
+  grid-template-columns: calc(228 / 355) fr calc(127 / 355) fr;
+  grid-template-rows: 1fr min-content 1fr;
   grid-template-areas:
     ". rec-and-buttons"
     "no-focus no-focus"
@@ -46,7 +46,6 @@
 }
 .rec-and-buttons {
   position: relative;
-  right: 0;
   grid-area: rec-and-buttons;
   justify-self: end;
 }
@@ -54,7 +53,7 @@
   grid-area: no-focus;
   justify-self: start;
   color: var(--no-focus-color);
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 700;
   font-size: var(--font-size-xl-mobile);
   line-height: 83%;
@@ -69,24 +68,28 @@
   border: 1px solid transparent;
   padding: 2px 13px 2px 13px;
   color: var(--button-text-color);
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
   text-align: center;
+  text-transform: lowercase;
   background-color: transparent;
+  transition: border 0.3s ease;
 }
 .header__theme-menu-button:hover {
   border: 1px solid var(--button-border-color-hover);
+  outline: none;
 }
 .header__theme-menu-button:focus {
   border-bottom: 1px solid var(--button-border-color);
+  outline: none;
 }
 .header-text {
   grid-area: header-text;
   align-self: center;
-  color: #000028;
-  font-family: IBM Plex Mono;
+  color: var(--header-text-color);
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 700;
   font-size: 18px;
   line-height: 23.5px;
@@ -105,7 +108,7 @@
   justify-self: end;
   padding-right: 1px;
   color: var(--rec-color);
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
@@ -119,69 +122,80 @@
   height: 9px;
   margin: 8px 1px 8px 10px;
   border-radius: 100%;
-  box-shadow: 2px 2px 4px 4px rgb(255, 0, 112 / 0.5);
+  box-shadow: 0 0 4px 4px rgb(255 0 112 / 0.5);
   background-color: var(--rec-color);
 }
 .main {
   display: grid;
-  grid-template-columns: 355px;
+  grid-template-columns: 1fr;
   padding: 40px 10px 0 10px;
+}
+.content-section {
+  width: 100%;
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 23.4px;
 }
 .link__text {
   color: var(--link-text-color);
-  font-family: IBM Plex Mono;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 100%;
   text-decoration: none;
   text-shadow: 2px 2px var(--link-text-shadow-color);
+  transition: border-bottom 0.3s ease;
 }
 .link__text:hover {
+  border-bottom: 1px solid var(--link-hover-color);
+  outline: none;
   text-decoration: underline;
 }
 .link__text:focus-visible {
   border: 1px solid var(--link-focus-visible-color);
+  outline: none;
 }
-.block__why {
-  margin-bottom: 20px;
+.article {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  grid-auto-flow: row;
+  gap: 20px;
 }
-.block__what {
-  margin-bottom: 20px;
+.article:last-child {
+  margin-bottom: 50px;
 }
-.block__whats__better {
-  margin-bottom: 1px;
+.paragraph {
+  grid-column: 1;
 }
-.tittle__h2 {
+
+.tittle {
   padding-bottom: 20px;
   color: var(--tittle-h2-color);
-  font-family: IBM Plex Mono;
   font-weight: 700;
   font-size: 18px;
-  line-height: 23.4px;
 }
-.tittle__h3 {
-  color: var(--tittle-h3-h4-color);
-  font-family: IBM Plex Mono;
-  font-weight: 700;
+h3 {
   font-size: 18px;
-  line-height: 23.4px;
+}
+.block__for__tittle__for__images {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 100%;
+}
+.tittle__above__text {
+  color: var(--tittle-h3-h4-color);
+  font-weight: 700;
 }
 .description {
-  padding: 10px 0 20px 0;
+  padding: 10px 0 0 0;
   color: var(--description-color);
-  font-family: IBM Plex Mono;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23.4px;
 }
-.tittle__h4 {
+p {
+  font-size: 18px;
+}
+.small__tittle {
   color: var(--tittle-h3-h4-color);
-  font-family: IBM Plex Mono;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 23.4px;
 }
-.paragraph__last {
+.article__how {
   margin-bottom: 18px;
 }
 .images {
@@ -197,111 +211,116 @@
   height: auto;
   margin: 0;
 }
-.last__text {
-  padding-bottom: 30px;
+
+.paragraph__with__5__advices {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
+  grid-auto-flow: row;
+  gap: 20px;
 }
-.last_paragraph {
-  padding-top: 20px;
+h4 {
+  font-size: 18px;
+}
+.block__with__advice {
+  grid-column: 1;
 }
 .footer {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   min-height: 668px;
   padding: 0 10px 10px 10px;
 }
+.header__theme-menu-button_active {
+  border: 1px solid var(--color-border-active);
+  pointer-events: none;
+}
 
 @media (min-width: 768px) {
   .header {
-    position: relative;
-    display: grid;
-    grid-template-columns: 253px 20px 108px 364px;
-    grid-template-rows: 443px 99px 442px;
+    grid-template-columns:
+      calc(253 / 745) fr calc(20 / 745) fr calc(108 / 745)
+      fr calc(364 / 745) fr;
+    grid-template-rows: 1fr min-content 1fr;
     grid-template-areas:
       ". . . rec-and-buttons"
       "no-focus no-focus no-focus no-focus"
       ". . . header-text";
-    height: 100vh;
     min-height: 1024px;
     padding: 20px 20px 20px 3px;
+  }
+  .header-text {
+    margin-left: 380px;
+  }
+  .no-focus {
+    font-size: var(--font-size-xl-desktop);
   }
   .header__theme-menu {
     padding-top: 175px;
   }
   .decorated-zone::after {
-    content: "";
-    position: absolute;
     top: 20px;
     right: 20px;
-    z-index: 1;
-    width: 25px;
-    height: 25px;
-    border-top: 1px solid var(--decorated-zone);
-    border-right: 1px solid var(--decorated-zone);
   }
   .decorated-zone::before {
-    content: "";
-    position: absolute;
     bottom: 20px;
     left: 20px;
-    z-index: 1;
-    width: 25px;
-    height: 25px;
-    border-bottom: 1px solid var(--decorated-zone);
-    border-left: 1px solid var(--decorated-zone);
   }
   .main {
+    gap: 30px;
     padding: 60px 20px 0 20px;
+  }
+  .tittle {
+    max-width: 255px;
+    padding-right: 20px;
   }
   .block__why {
     display: grid;
-    grid-template-columns: 236px 20px 108px 364px;
+    grid-template-columns:
+      calc(236 / 745) fr calc(20 / 745) fr calc(108 / 745)
+      fr calc(364 / 745) fr;
   }
-  .first__h2 {
+  .tittle__why__concentrate {
     grid-column: 1;
   }
-  .first__block {
+  .article__why {
     grid-column: 2 / 5;
-    padding-left: 20px;
+  }
+  .article:last-child {
+    margin-bottom: 50px;
   }
   .block__what {
     display: grid;
-    grid-template-columns: 236px 20px 108px 364px;
-    padding-top: 28px;
+    grid-template-columns:
+      calc(236 / 745) fr calc(20 / 745) fr calc(108 / 745)
+      fr calc(364 / 745) fr;
   }
-  .second__h2 {
+  .tittle__which__reduces {
     grid-column: 1;
   }
-  .second__block {
+  .article__what {
     grid-column: 1 / 5;
   }
   .block__whats__better {
     display: grid;
-    grid-template-columns: 236px 20px 108px 364px;
-    margin-bottom: 10px;
-    padding-top: 30px;
+    grid-template-columns:
+      calc(196 / 745) fr calc(20 / 745) fr calc(148 / 745)
+      fr calc(364 / 745) fr;
   }
-  .third__h2 {
+  .tittle__how__concentrate {
     grid-column: 1;
   }
-  .paragraph__last {
+  .article__how {
     grid-column: 2 / 5;
-    padding-left: 20px;
-  }
-  .paragraph__with__images {
-    min-width: 728px;
-    margin-top: 30px;
   }
   .images {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 192px 230px 318px;
+    grid-template-rows: repeat(3, auto);
     gap: 20px;
-    max-width: 100%;
-    height: auto;
-    padding: 20px 0 50px 0;
-    min-inline-size: 728px;
+    padding: 20px 0 60px 0;
   }
   .image:nth-child(1) {
     grid-column: 1 / 3;
@@ -336,39 +355,31 @@
     object-fit: cover;
   }
   .footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "no-focus-footer";
-    height: 100vh;
     min-height: 1024px;
-    padding: 20px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
   }
   .no-focus-footer {
-    grid-area: no-focus-footer;
+    align-self: end;
     margin: auto;
   }
 }
 
 @media (min-width: 1024px) {
   .header {
-    position: relative;
-    display: grid;
-    grid-template-columns: 334px 20px 157px 158px 20px 314px;
-    grid-template-rows: 299px 130px 299px;
+    grid-template-columns:
+      calc(334 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
+      fr calc(158 / 1003) fr calc(20 / 1003) fr calc(314 / 1003) fr;
+    grid-template-rows: 1fr min-content 1fr;
     grid-template-areas:
-      ". . header__theme-menu header__theme-menu . ."
+      "header__theme-menu header__theme-menu header__theme-menu header__theme-menu header__theme-menu header__theme-menu"
       "no-focus no-focus no-focus  no-focus no-focus no-focus"
       ". . . header-text header-text header-text";
-    height: 100vh;
     min-height: 768px;
     padding: 20px 20px 20px 1px;
   }
-  .no-focus {
-    font-size: var(--font-size-xl-desktop);
-  }
+
   .rec-and-buttons {
     position: initial;
-    right: initial;
     grid-area: header__theme-menu;
     justify-self: initial;
   }
@@ -377,6 +388,7 @@
     flex-direction: row;
     justify-content: center;
     padding-top: 0;
+    padding-left: 20px;
   }
   .header__theme-menu-list {
     display: flex;
@@ -384,34 +396,46 @@
     gap: 7px;
     padding-top: 0;
   }
-
   .rec {
     position: absolute;
     top: 21px;
     right: 47px;
   }
-  .main {
-    padding: 60px 20px 0 20px;
+  .header-text {
+    margin-left: 510px;
+  }
+  .tittle__why__concentrate,
+  .tittle__which__reduces {
+    min-width: 240px;
+    max-width: 350px;
+  }
+  .tittle__how__concentrate {
+    min-width: 300px;
+    max-width: 335px;
+  }
+  .article__what {
+    gap: initial;
   }
   .block__why {
-    display: grid;
-    grid-template-columns: 315px 20px 157px 158px 20px 314px;
+    grid-template-columns:
+      calc(315 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
+      fr calc(158 / 1003) fr calc(20 / 1003) fr calc(314 / 1003) fr;
   }
-  .first__h2 {
-    grid-column: 1;
-  }
-  .first__block {
+
+  .article__why {
     grid-column: 2 / 7;
   }
-  .second__h2 {
-    grid-column: 1;
+  .tittle__which__reduces {
     grid-row: 1;
-    width: 315px;
+    width: 100%;
+    min-width: 315px;
   }
-  .second__block {
+  .article__what {
     display: grid;
     grid-template-columns: 315px 20px 157px 158px 20px 314px;
     grid-template-rows: repeat(2, min-content);
+    grid-auto-columns: min-content;
+    grid-auto-flow: column;
   }
   .concentration {
     grid-column: 1 / 2;
@@ -426,77 +450,26 @@
     grid-row: 2;
   }
   .block__whats__better {
-    display: grid;
-    grid-template-columns: 315px 20px 157px 158px 20px 314px;
+    grid-template-columns:
+      calc(315 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
+      fr calc(158 / 1003) fr calc(20 / 1003) fr calc(314 / 1003) fr;
   }
-  .third__h2 {
-    grid-column: 1;
-  }
-  .paragraph__last {
+
+  .article__how {
     grid-column: 3 / 7;
     padding-left: 0;
   }
 
-  .paragraph__with__images {
-    min-width: 983px;
-  }
   .images {
-    display: grid;
-    grid-template-columns: 315px 315px 314px;
-    grid-template-rows: 260px 315px 433px;
-    gap: 20px;
-    max-width: 100%;
-    height: auto;
-    padding: 20px 0 50px 0;
-    min-inline-size: 984px;
+    grid-template-columns: calc(315 / 1003) fr calc(315) fr calc(314 / 1003) fr;
+    grid-template-rows: repeat(3, auto);
   }
-  .image:nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-  .image:nth-child(2) {
-    grid-column: 3 / -1;
-    grid-row: 1 / 3;
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2 / -1;
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image:nth-child(4) {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-  }
-  .image:nth-child(5) {
-    grid-column: 2 / -1;
-    grid-row: 3 / -1;
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-  }
+
   .footer {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "no-focus-footer";
-    height: 100vh;
     min-height: 768px;
     padding: 0 20px 20px 20px;
   }
   .no-focus-footer {
-    grid-area: no-focus-footer;
-    margin: auto;
     padding-top: 22px;
   }
-}
-.header__theme-menu-button_active {
-  border: 1px solid var(--color-border-active);
-  pointer-events: none;
 }
