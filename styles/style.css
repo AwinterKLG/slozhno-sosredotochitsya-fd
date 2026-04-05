@@ -9,7 +9,7 @@
 .header {
   position: relative;
   display: grid;
-  grid-template-columns: calc(228 / 355) fr calc(127 / 355) fr;
+  grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr min-content 1fr;
   grid-template-areas:
     ". rec-and-buttons"
@@ -145,7 +145,6 @@
 .link__text:hover {
   border-bottom: 1px solid var(--link-hover-color);
   outline: none;
-  text-decoration: underline;
 }
 .link__text:focus-visible {
   border: 1px solid var(--link-focus-visible-color);
@@ -171,7 +170,7 @@
   font-weight: 700;
   font-size: 18px;
 }
-h3 {
+h3.tittle__above__text {
   font-size: 18px;
 }
 .block__for__tittle__for__images {
@@ -188,7 +187,7 @@ h3 {
   color: var(--description-color);
   font-weight: 400;
 }
-p {
+p.description {
   font-size: 18px;
 }
 .small__tittle {
@@ -207,19 +206,19 @@ p {
   padding: 10px 0 40px 0;
 }
 .image {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   margin: 0;
 }
 
-.paragraph__with__5__advices {
+.paragraph__with__advices {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
   grid-auto-flow: row;
   gap: 20px;
 }
-h4 {
+h4.small__tittle {
   font-size: 18px;
 }
 .block__with__advice {
@@ -241,19 +240,17 @@ h4 {
 
 @media (min-width: 768px) {
   .header {
-    grid-template-columns:
-      calc(253 / 745) fr calc(20 / 745) fr calc(108 / 745)
-      fr calc(364 / 745) fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr min-content 1fr;
     grid-template-areas:
-      ". . . rec-and-buttons"
-      "no-focus no-focus no-focus no-focus"
-      ". . . header-text";
+      ". rec-and-buttons"
+      "no-focus no-focus"
+      ". header-text";
     min-height: 1024px;
     padding: 20px 20px 20px 3px;
   }
   .header-text {
-    margin-left: 380px;
+    margin-left: 133px;
   }
   .no-focus {
     font-size: var(--font-size-xl-desktop);
@@ -271,50 +268,57 @@ h4 {
   }
   .main {
     gap: 30px;
+    width: 100%;
+    max-width: 100%;
     padding: 60px 20px 0 20px;
   }
   .tittle {
     max-width: 255px;
-    padding-right: 20px;
   }
   .block__why {
     display: grid;
-    grid-template-columns:
-      calc(236 / 745) fr calc(20 / 745) fr calc(108 / 745)
-      fr calc(364 / 745) fr;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
   }
   .tittle__why__concentrate {
     grid-column: 1;
   }
   .article__why {
     grid-column: 2 / 5;
+    margin-left: 13px;
   }
   .article:last-child {
     margin-bottom: 50px;
   }
   .block__what {
     display: grid;
-    grid-template-columns:
-      calc(236 / 745) fr calc(20 / 745) fr calc(108 / 745)
-      fr calc(364 / 745) fr;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+    max-width: 100%;
   }
   .tittle__which__reduces {
     grid-column: 1;
+    max-width: 200px;
   }
   .article__what {
     grid-column: 1 / 5;
   }
+
   .block__whats__better {
     display: grid;
-    grid-template-columns:
-      calc(196 / 745) fr calc(20 / 745) fr calc(148 / 745)
-      fr calc(364 / 745) fr;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
   }
   .tittle__how__concentrate {
     grid-column: 1;
   }
   .article__how {
     grid-column: 2 / 5;
+    margin-left: 13px;
   }
   .images {
     grid-template-columns: repeat(3, 1fr);
@@ -329,28 +333,28 @@ h4 {
   .image:nth-child(2) {
     grid-column: 3 / -1;
     grid-row: 1 / 3;
-    width: auto;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
   .image:nth-child(3) {
     grid-column: 1;
     grid-row: 2 / -1;
-    width: auto;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
   .image:nth-child(4) {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    width: auto;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
   .image:nth-child(5) {
     grid-column: 2 / -1;
     grid-row: 3 / -1;
-    width: auto;
+    width: 100%;
     height: 100%;
     object-fit: cover;
   }
@@ -366,14 +370,12 @@ h4 {
 
 @media (min-width: 1024px) {
   .header {
-    grid-template-columns:
-      calc(334 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
-      fr calc(158 / 1003) fr calc(20 / 1003) fr calc(314 / 1003) fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr min-content 1fr;
     grid-template-areas:
-      "header__theme-menu header__theme-menu header__theme-menu header__theme-menu header__theme-menu header__theme-menu"
-      "no-focus no-focus no-focus  no-focus no-focus no-focus"
-      ". . . header-text header-text header-text";
+      "header__theme-menu header__theme-menu"
+      "no-focus no-focus"
+      ". header-text";
     min-height: 768px;
     padding: 20px 20px 20px 1px;
   }
@@ -402,65 +404,52 @@ h4 {
     right: 47px;
   }
   .header-text {
-    margin-left: 510px;
+    margin-left: 10px;
   }
   .tittle__why__concentrate,
   .tittle__which__reduces {
-    min-width: 240px;
     max-width: 350px;
   }
   .tittle__how__concentrate {
-    min-width: 300px;
     max-width: 335px;
   }
-  
-  .block__why {
-    grid-template-columns:
-      calc(315 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
-      fr calc(158 / 1003) fr calc(20 / 1003) fr calc(314 / 1003) fr;
-  }
 
+  .block__why {
+    grid-template-columns: 1fr 2fr;
+  }
+  .tittle {
+    max-width: 320px;
+  }
   .article__why {
     grid-column: 2 / 7;
+    margin-left: 20px;
   }
   .tittle__which__reduces {
     grid-row: 1;
     width: 100%;
-    min-width: 315px;
   }
   .article__what {
     display: grid;
-    grid-template-columns: 315px 20px 157px 158px 20px 314px;
-    grid-template-rows: repeat(2, min-content);
-    grid-auto-columns: min-content;
-    grid-auto-flow: column;
-    gap: initial;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    grid-auto-flow: row;
+    gap: 20px;
   }
-  .concentration {
-    grid-column: 1 / 2;
-    grid-row: 2;
+  .paragraph {
+    grid-column: initial;
   }
-  .eat {
-    grid-column: 3 / 5;
-    grid-row: 2;
-  }
-  .gadgets {
-    grid-column: 6 / 7;
-    grid-row: 2;
-  }
+
   .block__whats__better {
-    grid-template-columns:
-      calc(315 / 1003) fr calc(20 / 1003) fr calc(157 / 1003)
-      fr calc(158 / 1003) fr calc(20 / 1003) fr calc(314 / 1003) fr;
+    grid-template-columns: 1fr 2fr;
   }
 
   .article__how {
-    grid-column: 3 / 7;
-    padding-left: 0;
+    grid-column: 2 / 4;
+    margin-left: 4px;
   }
 
   .images {
-    grid-template-columns: calc(315 / 1003) fr calc(315) fr calc(314 / 1003) fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
   }
 
